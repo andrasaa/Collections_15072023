@@ -31,31 +31,18 @@ public class Main {
         Matcher peopleMat   = peoplePat.matcher(peopleText);
 
         int totalSalaries = 0;
+        Employee employee = null;
         while (peopleMat.find()) {
-            totalSalaries += switch (peopleMat.group("role")) {
-                case "Programmer"->{
-                    Programmer programmer = new Programmer(peopleMat.group());
-//                    System.out.println(peopleMat.group());
-                    System.out.println(programmer.toString());
-                    yield programmer.getSalary();
-                }
-                case "Manager"->{
-                    Manager manager = new Manager(peopleMat.group());
-                    System.out.println(manager.toString());
-                    yield manager.getSalary();
-                }
-                case "Analyst"->{
-                    Analyst analyst = new Analyst(peopleMat.group());
-                    System.out.println(analyst.toString());
-                    yield analyst.getSalary();
-                }
-                case "CEO" -> {
-                    Ceo ceo = new Ceo(peopleMat.group());
-                    System.out.println(ceo.toString());
-                    yield ceo.getSalary();
-                }
-                default -> 0;
+//            totalSalaries +=
+                    employee = switch (peopleMat.group("role")) {
+                case "Programmer"-> new Programmer(peopleMat.group());
+                case "Manager"-> new Manager(peopleMat.group());
+                case "Analyst"-> new Analyst(peopleMat.group());
+                case "CEO" -> new Ceo(peopleMat.group());
+                default -> null;
             };
+            System.out.println(employee.toString());
+            totalSalaries+= employee.getSalary();
         }
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
