@@ -19,7 +19,8 @@ public class Programmer extends Employee implements IEmployee, Apple{
                 this.linesOfCode = Integer.parseInt(progMat.group("locpd"));
                 this.yearsOfExp = Integer.parseInt(progMat.group("yoe"));
                 this.iq = Integer.parseInt(progMat.group("iq"));
-    }}
+        }
+    }
     public int getSalary(){
 //        salary =  3000 + locpd * yoe * iq;
     return 3000+ linesOfCode * yearsOfExp * iq;
