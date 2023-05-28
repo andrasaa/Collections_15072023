@@ -6,10 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Ceo implements Employee{
-    private String lastName;
-    private String firstName;
-    private LocalDate dob;
+public class Ceo extends Employee{
     private int avgStockPrice = 0;
 
     private final String peopleRegex = "(?<lastName>\\w+),\\s*(?<firstName>\\w+),\\s*(?<dob>\\d{1,2}/\\d{1,2}/\\d{4}),\\s*(?<role>\\w+)(?:,\\s*\\{(?<details>.*)\\})?\\n";
