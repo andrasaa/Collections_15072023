@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         String peopleText = """
             Flinstone1, Fred1, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
-            Flinstone2, Fred2, 1/1/1900, Programmer, {locpd=1300,yoe=14,iq=100}
+            Flinstone2, Fred2, 1/1/1900, Programmerzzzz, {locpd=1300,yoe=14,iq=100}
             Flinstone3, Fred3, 1/1/1900, Programmer, {locpd=2300,yoe=8,iq=105}
             Flinstone4, Fred4, 1/1/1900, Programmer, {locpd=1630,yoe=3,iq=115}
             Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}
@@ -31,10 +31,8 @@ public class Main {
         Employee employee = null;
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
-                if(employee != null){
-                System.out.println(employee.toString());
-                totalSalaries+= employee.getSalary();
-                }
+            System.out.println(employee.toString());
+            totalSalaries+= employee.getSalary();
         }
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
