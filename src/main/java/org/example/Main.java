@@ -1,6 +1,7 @@
 package org.example;
 
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 
 public class Main {
@@ -36,5 +37,9 @@ public class Main {
         }
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
-    }
+
+    Weirdo larry = new Weirdo("David", "Larry", LocalDate.of(1950,1,1));
+    Weirdo jake = new Weirdo("Snake","Jake");
+    jake.sayHello();
+}
 }
