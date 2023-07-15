@@ -28,8 +28,6 @@ public class Main {
 
         Matcher peopleMat   = Employee.PEOPLE_PAT.matcher(peopleText);
 
-        Programmer coder = new Programmer("");
-        coder.cook("Hamburger");
 
         int totalSalaries = 0;
         IEmployee employee = null;
