@@ -2,6 +2,8 @@ package org.example;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 
 public class Main {
@@ -31,25 +33,32 @@ public class Main {
 
         int totalSalaries = 0;
         IEmployee employee = null;
+        List<IEmployee> employees = new ArrayList<>();
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
+            employees.add(employee);
             //Changed:
 
-            if (employee instanceof Programmer prog){
-//                Programmer prog = (Programmer) employee;
-                System.out.println(prog.getIq());
-            } else if (employee instanceof Manager man){
-                System.out.println(man.toString());
-            } else if (employee instanceof Analyst){
-                System.out.println();
-            } else if (employee instanceof Ceo){
-                System.out.println();
-            } else {
-                System.out.println("Default output");
-            }
-            System.out.println(employee.toString());
-            totalSalaries+= employee.getSalary();
+//            if (employee instanceof Programmer prog){
+////                Programmer prog = (Programmer) employee;
+//                System.out.println(prog.getIq());
+//            } else if (employee instanceof Manager man){
+//                System.out.println(man.toString());
+//            } else if (employee instanceof Analyst){
+//                System.out.println();
+//            } else if (employee instanceof Ceo){
+//                System.out.println();
+//            } else {
+//                System.out.println("Default output");
+//            }
+//            System.out.println(employee.toString());
+//            totalSalaries+= employee.getSalary();
         }
+        for(IEmployee worker:employees){
+            System.out.println(worker.toString());
+            totalSalaries += worker.getSalary();
+        }
+
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
 
