@@ -57,12 +57,16 @@ public class Main {
 //            totalSalaries+= employee.getSalary();
         }
 
-        List<String> removalNames = new ArrayList<>();
-        removalNames.add("Wilma5");
-        removalNames.add("Barney4");
-        removalNames.add("Fred2");
 
-        removeUndesirables(employees, removalNames);
+
+
+        employees.remove(0);
+        employees.remove(1);
+        employees.remove(2);
+
+
+        List<String> undesirables = List.of("Wilma5","Barney4","Fred2");
+        removeUndesirables(employees, undesirables);
 
 
         for(IEmployee worker : employees){
