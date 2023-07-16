@@ -3,6 +3,7 @@ package org.example;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -61,13 +62,10 @@ public class Main {
         removalNames.add("Barney4");
         removalNames.add("Fred2");
 
+        removeUndesirables(employees, removalNames);
+
+
         for(IEmployee worker : employees){
-            if (worker instanceof Employee){
-                Employee tmpWorker = (Employee)worker;
-                if(removalNames.contains(tmpWorker.firstName)){
-                    employees.remove(worker);
-                }
-            }
             System.out.println(worker.toString());
             totalSalaries += worker.getSalary();
         }
@@ -79,4 +77,15 @@ public class Main {
     Weirdo jake = new Weirdo("Snake","Jake");
     jake.sayHello();
 }
+
+    private static void removeUndesirables(List<IEmployee> employees, List<String> removalNames) {
+        for (Iterator<IEmployee> it = employees.iterator(); it.hasNext(); ){
+            IEmployee worker = it.next();
+            if (worker instanceof Employee tmpWorker){
+               if (removalNames.contains(tmpWorker.firstName)){
+                   it.remove();
+               }
+            }
+        }
+    }
 }
