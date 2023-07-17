@@ -56,18 +56,18 @@ public class Main {
 //            System.out.println(employee.toString());
 //            totalSalaries+= employee.getSalary();
         }
-
-
-
-
         employees.remove(0);
         employees.remove(1);
         employees.remove(2);
 
+        employees.set(0, Employee.createEmployee("Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300)"));
 
-        List<String> undesirables = List.of("Wilma5","Barney4","Fred2");
+        List<String> undesirables = new ArrayList<>(List.of("Wilma5","Barney4","Fred2"));
         removeUndesirables(employees, undesirables);
 
+        List<String> newStrings = new ArrayList<>();
+        newStrings.addAll(undesirables);
+        System.out.println(newStrings.size());
 
         for(IEmployee worker : employees){
             System.out.println(worker.toString());
