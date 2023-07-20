@@ -56,30 +56,39 @@ public class Main {
 //            System.out.println(employee.toString());
 //            totalSalaries+= employee.getSalary();
         }
-        employees.remove(0);
-        employees.remove(1);
-        employees.remove(2);
 
-        employees.set(0, Employee.createEmployee("Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300)"));
 
-        List<String> undesirables = new ArrayList<>(List.of("Wilma5","Barney4","Fred2"));
-        removeUndesirables(employees, undesirables);
 
-        List<String> newStrings = new ArrayList<>();
-        newStrings.addAll(undesirables);
-        System.out.println(newStrings.size());
+        IEmployee myEmp = employees.get(5);
+        System.out.println(employees.contains(myEmp));
 
-        for(IEmployee worker : employees){
-            System.out.println(worker.toString());
-            totalSalaries += worker.getSalary();
-        }
+        IEmployee employee1 = Employee.createEmployee("Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}");
+        System.out.println(employees.contains(employee1));
 
-        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
-        System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
+        System.out.println(myEmp.equals(employee1));
 
-    Weirdo larry = new Weirdo("David", "Larry", LocalDate.of(1950,1,1));
-    Weirdo jake = new Weirdo("Snake","Jake");
-    jake.sayHello();
+
+
+//        employees.set(0, Employee.createEmployee("Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300)"));
+//
+//        List<String> undesirables = new ArrayList<>(List.of("Wilma5","Barney4","Fred2"));
+//        removeUndesirables(employees, undesirables);
+//
+//        List<String> newStrings = new ArrayList<>();
+//        newStrings.addAll(undesirables);
+//        System.out.println(newStrings.size());
+//
+//        for(IEmployee worker : employees){
+//            System.out.println(worker.toString());
+//            totalSalaries += worker.getSalary();
+//        }
+//
+//        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
+//        System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
+//
+//    Weirdo larry = new Weirdo("David", "Larry", LocalDate.of(1950,1,1));
+//    Weirdo jake = new Weirdo("Snake","Jake");
+//    jake.sayHello();
 }
 
     private static void removeUndesirables(List<IEmployee> employees, List<String> removalNames) {
