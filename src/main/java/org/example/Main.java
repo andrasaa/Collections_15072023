@@ -2,10 +2,7 @@ package org.example;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 
 public class Main {
@@ -67,7 +64,16 @@ public class Main {
 
         System.out.println(myEmp.equals(employee1));
 
-
+        employees.sort(new Comparator<IEmployee>() {
+            @Override
+            public int compare(IEmployee o1, IEmployee o2) {
+                if (o1 instanceof Employee emp1 && o2 instanceof Employee emp2){
+                    int lnameResult =  emp1.lastName.compareTo(emp2.lastName);
+                    return lnameResult != 0 ? lnameResult : Integer.compare(emp1.getSalary(),emp2.getSalary());
+                }
+            return 0;
+            }
+        });
 
 //        employees.set(0, Employee.createEmployee("Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300)"));
 //
@@ -78,10 +84,10 @@ public class Main {
 //        newStrings.addAll(undesirables);
 //        System.out.println(newStrings.size());
 //
-//        for(IEmployee worker : employees){
-//            System.out.println(worker.toString());
-//            totalSalaries += worker.getSalary();
-//        }
+        for(IEmployee worker : employees){
+            System.out.println(worker.toString());
+            totalSalaries += worker.getSalary();
+        }
 //
 //        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
 //        System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
