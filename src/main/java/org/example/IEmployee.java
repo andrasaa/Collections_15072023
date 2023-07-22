@@ -1,5 +1,7 @@
 package org.example;
 
-public interface IEmployee {
+public interface IEmployee extends Comparable<IEmployee>{
     int getSalary();
+
+
 }

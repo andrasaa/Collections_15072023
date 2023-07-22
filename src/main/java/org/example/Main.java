@@ -64,21 +64,23 @@ public class Main {
 
         System.out.println(myEmp.equals(employee1));
 
-        employees.sort(new Comparator<IEmployee>() {
-            @Override
-            public int compare(IEmployee o1, IEmployee o2) {
-                if (o1 instanceof Employee emp1 && o2 instanceof Employee emp2){
-                    int lnameResult =  emp1.lastName.compareTo(emp2.lastName);
-                    return lnameResult != 0 ? lnameResult : Integer.compare(emp1.getSalary(),emp2.getSalary());
-                }
-            return 0;
-            }
-        });
+        Collections.shuffle();
+        Collections.sort(employees, Comparator.reverseOrder());
+
+//        employees.sort((o1, o2) -> {
+//            if (o1 instanceof Employee emp1 && o2 instanceof Employee emp2){
+//                int lnameResult =  emp1.lastName.compareTo(emp2.lastName);
+//                return lnameResult != 0 ? lnameResult : Integer.compare(emp1.getSalary(),emp2.getSalary());
+//            }
+//        return 0;
+//        });
 
 //        employees.set(0, Employee.createEmployee("Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300)"));
 //
 //        List<String> undesirables = new ArrayList<>(List.of("Wilma5","Barney4","Fred2"));
-//        removeUndesirables(employees, undesirables);
+//        undesirables.sort(Comparator.naturalOrder());
+//        System.out.println(undesirables);
+        //        removeUndesirables(employees, undesirables);
 //
 //        List<String> newStrings = new ArrayList<>();
 //        newStrings.addAll(undesirables);
@@ -88,7 +90,7 @@ public class Main {
             System.out.println(worker.toString());
             totalSalaries += worker.getSalary();
         }
-//
+
 //        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
 //        System.out.printf("The total payout should be %s%n", currencyInstance.format(totalSalaries));
 //
