@@ -49,6 +49,8 @@ public abstract class Employee implements IEmployee{
         }
     }
 
+
+
     public abstract int getSalary();
 
     public double getBonus(){
@@ -59,6 +61,7 @@ public abstract class Employee implements IEmployee{
     public String toString(){
         return String.format("%s, %s: %s - %s", lastName, firstName,moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
     }
+
 
     private static final class DummyEmployee extends Employee {
         @Override
