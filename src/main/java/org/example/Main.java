@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 
 public class Main {
 
+    private static Set<IEmployee> employees;
+
     public static void main(String[] args) {
         String peopleText = """
             Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
@@ -39,7 +41,7 @@ public class Main {
 
         int totalSalaries = 0;
         IEmployee employee = null;
-        Set<IEmployee> employees = new TreeSet<>((e1,e2)-> Integer.compare(e1.getSalary(),(e2.getSalary())));
+        employees = new TreeSet<>((e1, e2)-> Integer.compare(e1.getSalary(),(e2.getSalary())));
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
             employees.add(employee);
@@ -64,5 +66,15 @@ public class Main {
                }
             }
         }
+    }
+
+    public int getSalary(String firstName) {
+        for (IEmployee employee:employees){
+            Employee emp = (Employee)employee;
+            if (firstName.equals(emp.firstName)){
+                return emp.getSalary();
+            }
+        }
+        return 0;
     }
 }
